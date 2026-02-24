@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Avery",
+    "age": 29,
+    "city": "Austin",
+    "intent": "long-term",
+    "interests": ["hiking", "music", "coffee"]
+  },
+  {
+    "name": "Jordan",
+    "age": 32,
+    "city": "Seattle",
+    "intent": "long-term",
+    "interests": ["books", "films", "travel"]
+  },
+  {
+    "name": "Riley",
+    "age": 27,
+    "city": "Denver",
+    "intent": "friendship",
+    "interests": ["cooking", "photography", "hiking"]
+  },
+  {
+    "name": "Taylor",
+    "age": 35,
+    "city": "Chicago",
+    "intent": "casual",
+    "interests": ["running", "podcasts", "travel"]
+  },
+  {
+    "name": "Casey",
+    "age": 30,
+    "city": "Portland",
+    "intent": "long-term",
+    "interests": ["board games", "travel", "coffee"]
+  },
+  {
+    "name": "Morgan",
+    "age": 26,
+    "city": "San Diego",
+    "intent": "friendship",
+    "interests": ["beach", "music", "cooking"]
+  }
+]

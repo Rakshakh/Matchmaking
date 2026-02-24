@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matchmaking — Production Demo</title>
+    <meta name="description" content="Production-ready minimal matchmaking application demo" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="card">
+        <h1>Matchmaking</h1>
+        <p class="subtitle">Launch-ready demo with API-backed matching.</p>
+
+        <form id="matchForm">
+          <label>
+            Your age
+            <input id="age" name="age" type="number" min="18" max="80" value="29" required />
+          </label>
+
+          <label>
+            Intent
+            <select id="intent" name="intent" required>
+              <option value="long-term">Long-term</option>
+              <option value="casual">Casual</option>
+              <option value="friendship">Friendship</option>
+            </select>
+          </label>
+
+          <fieldset>
+            <legend>Top interests (pick up to 3)</legend>
+            <div class="chips">
+              <label><input type="checkbox" name="interest" value="hiking" /> Hiking</label>
+              <label><input type="checkbox" name="interest" value="music" /> Music</label>
+              <label><input type="checkbox" name="interest" value="coffee" /> Coffee</label>
+              <label><input type="checkbox" name="interest" value="travel" /> Travel</label>
+              <label><input type="checkbox" name="interest" value="books" /> Books</label>
+              <label><input type="checkbox" name="interest" value="cooking" /> Cooking</label>
+            </div>
+          </fieldset>
+
+          <button id="findBtn" type="submit">Find best match</button>
+        </form>
+      </section>
+
+      <section class="card result" id="result" aria-live="polite">
+        <h2>Match result</h2>
+        <p class="empty">Submit your preferences to get your best match.</p>
+      </section>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
