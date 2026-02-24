@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matchmaking</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Matchmaking</h1>
+      <p class="subtitle">Find people with similar preferences in seconds.</p>
+
+      <section class="card">
+        <h2>Create your profile</h2>
+        <form id="profile-form">
+          <label>
+            Name
+            <input id="name" type="text" required maxlength="40" placeholder="e.g. Taylor" />
+          </label>
+
+          <label>
+            Age
+            <input id="age" type="number" required min="18" max="99" />
+          </label>
+
+          <label>
+            Preferred age range
+            <div class="range-row">
+              <input id="preferred-min-age" type="number" required min="18" max="99" value="22" />
+              <span>to</span>
+              <input id="preferred-max-age" type="number" required min="18" max="99" value="35" />
+            </div>
+          </label>
+
+          <label>
+            Interests (comma separated)
+            <input id="interests" type="text" placeholder="hiking, coding, coffee" />
+          </label>
+
+          <button type="submit">Save profile</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Potential matches</h2>
+        <p id="empty-state">Add at least one profile to see matches.</p>
+        <ul id="match-list"></ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
