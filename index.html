@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matchmaking Onboarding</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <h1>Welcome to Matchmaking</h1>
+        <p class="subtitle">
+          Share what you are comfortable with so we can personalize potential matches.
+        </p>
+
+        <form id="onboarding-form" novalidate>
+          <label>
+            Full name
+            <input type="text" name="fullName" placeholder="Alex Doe" required />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" placeholder="alex@email.com" required />
+          </label>
+
+          <label>
+            Instagram handle
+            <input type="text" name="instagram" placeholder="@yourhandle" required />
+          </label>
+
+          <label>
+            LinkedIn profile URL
+            <input
+              type="url"
+              name="linkedin"
+              placeholder="https://linkedin.com/in/you"
+              required
+            />
+          </label>
+
+          <fieldset>
+            <legend>What online presence details can we use?</legend>
+            <label class="checkbox-row">
+              <input type="checkbox" name="presence" value="Public posts" />
+              Public posts
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="presence" value="Bio and profile details" />
+              Bio and profile details
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="presence" value="Interests and followed topics" />
+              Interests and followed topics
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="presence" value="Professional experience" />
+              Professional experience
+            </label>
+          </fieldset>
+
+          <label>
+            Anything else you'd like to share?
+            <textarea
+              name="extra"
+              rows="4"
+              placeholder="Tell us how much you want to share and what kind of match you are looking for."
+            ></textarea>
+          </label>
+
+          <label class="checkbox-row consent">
+            <input type="checkbox" name="consent" required />
+            I agree to let Matchmaking use the information above for onboarding and matching.
+          </label>
+
+          <button type="submit">Complete onboarding</button>
+          <p id="message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
