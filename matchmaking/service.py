@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Dict, List, Set, Tuple
@@ -107,7 +108,7 @@ class MatchmakingService:
                 {
                     "user_id": candidate_id,
                     "score": round(score, 4),
-                    "profile": candidate_profile,
+                    "profile": deepcopy(candidate_profile),
                 }
             )
 
@@ -173,13 +174,13 @@ class MatchmakingService:
         }
         self._chat_messages[self._chat_key(sender_id, receiver_id)].append(message)
         self._record_event("chat_message_sent", sender_id, receiver_id=receiver_id)
-        return message
+        return dict(message)
 
     def get_chat_history(self, user_a: int, user_b: int) -> List[Dict[str, object]]:
         if not self._are_matched(user_a, user_b):
             raise ValueError("users are not matched")
         self._record_event("chat_history_viewed", user_a, with_user=user_b)
-        return list(self._chat_messages[self._chat_key(user_a, user_b)])
+        return [dict(message) for message in self._chat_messages[self._chat_key(user_a, user_b)]]
 
     # -------- internals --------
     def _assert_user_exists(self, user_id: int) -> None:

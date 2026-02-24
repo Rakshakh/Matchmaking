@@ -74,6 +74,32 @@ class MatchmakingFlowTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.service.send_message(a, b, "hello")
 
+    def test_recommendations_return_profile_snapshots(self) -> None:
+        alex = self._seed_user("alex@example.com", "man", ["woman"], "NYC", ["hiking"], 30, 7)
+        sam = self._seed_user("sam@example.com", "woman", ["man"], "NYC", ["coffee"], 29, 6)
+
+        recommendations = self.service.get_recommendations(alex)
+        recommendations[0]["profile"]["location"] = "LA"
+        recommendations[0]["profile"]["interests"].append("mutated")
+
+        self.assertEqual(self.service._profiles[sam]["location"], "NYC")
+        self.assertEqual(self.service._profiles[sam]["interests"], ["coffee"])
+
+    def test_chat_apis_return_message_snapshots(self) -> None:
+        alex = self._seed_user("alex@example.com", "man", ["woman"], "NYC", ["hiking"], 30, 7)
+        sam = self._seed_user("sam@example.com", "woman", ["man"], "NYC", ["coffee"], 29, 6)
+        self.service.like_user(alex, sam)
+        self.service.like_user(sam, alex)
+
+        sent = self.service.send_message(alex, sam, "Hi Sam!")
+        sent["text"] = "tampered"
+
+        history = self.service.get_chat_history(alex, sam)
+        history[0]["text"] = "changed"
+
+        self.assertEqual(self.service._chat_messages[self.service._chat_key(alex, sam)][0]["text"], "Hi Sam!")
+
+
 
 if __name__ == "__main__":
     unittest.main()
